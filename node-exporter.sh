@@ -25,9 +25,9 @@ WantedBy=multi-user.target
 
 EOF
 
-sudo touch /lib/systemd/system/node_exporter.socket
+sudo touch /etc/systemd/system/node_exporter.socket
 
-cat <<EOF | sudo tee -a /lib/systemd/system/node_exporter.socket > /dev/null
+cat <<EOF | sudo tee -a /etc/systemd/system/node_exporter.socket > /dev/null
 [Unit]
 Description=Node Exporter
 
