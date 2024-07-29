@@ -41,3 +41,9 @@ SocketGroup=root
 WantedBy=sockets.target
 
 EOF
+
+
+sudo systemctl start node_exporter.socket
+sudo systemctl enable node_exporter.socket
+sudo systemctl start node_exporter.service
+sudo systemctl enable node_exporter.service
