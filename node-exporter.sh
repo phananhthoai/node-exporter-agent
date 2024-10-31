@@ -18,7 +18,7 @@ Description=Node Exporter
 
 [Service]
 Type=simple
-ExecStart=/opt/node_exporter --web.systemd-socket $OPTIONS
+ExecStart=/opt/node_exporter --web.systemd-socket --collector.systemd --collector.ethtool --collector.network_route --collector.tcpstat
 
 [Install]
 WantedBy=multi-user.target
