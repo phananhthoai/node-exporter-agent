@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  nginx:
+    image: phananhthoai/projects:nginx-proxy-0.0.1
+    ports:
+      - 9100:9100
+    volumes:
+      - /var/run/node_exporter.sock:/var/run/node_exporter.sock:ro
+    environment:
+      CONF: |
+        user root;
+        worker_processes auto;
+        pid /run/nginx.pid;
+        include /etc/nginx/modules-enabled/*.conf;
+
+        events {
+          worker_connections 1024;
+          multi_accept on;
+        }
+
+        stream {
+          server {
+            listen 9100;
+            proxy_pass unix:///var/run/node_exporter.sock;
+          }
+        }
+    deploy:
+      mode: global
+        
